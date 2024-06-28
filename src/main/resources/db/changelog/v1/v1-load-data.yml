@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1-2
+      author: Ilya
+
+      changes:
+        - loadData:
+            tableName: measurement
+            file: db/data/measurement-data.csv

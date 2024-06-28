@@ -5,7 +5,10 @@ import ru.zumber.testchrisproject.measurement.MeasurementDTO;
 import java.util.List;
 
 public interface MeasurementService {
+
     List<MeasurementDTO> findAll();
 
     MeasurementDTO save(MeasurementDTO measurementDTO);
+
+    MeasurementDTO findById(Long id);
 }

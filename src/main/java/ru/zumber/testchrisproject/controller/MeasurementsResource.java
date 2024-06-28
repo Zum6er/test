@@ -3,17 +3,19 @@ package ru.zumber.testchrisproject.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 import ru.zumber.testchrisproject.measurement.MeasurementDTO;
 import ru.zumber.testchrisproject.service.MeasurementService;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 
 @RestController
-@RequestMapping("test/measurement")
+@RequestMapping("test/measurements")
 @RequiredArgsConstructor
-public class MeasurementResource {
+public class MeasurementsResource {
+
     private final MeasurementService measurementService;
 
     @GetMapping
@@ -22,11 +24,14 @@ public class MeasurementResource {
     }
 
     @PostMapping
-    public ResponseEntity<MeasurementDTO> crateMeasurement(@RequestBody MeasurementDTO measurementDTO,
-                                                           UriComponentsBuilder uriComponentsBuilder) {
+    public ResponseEntity<MeasurementDTO> crateMeasurement(@RequestBody MeasurementDTO measurementDTO) throws URISyntaxException {
         MeasurementDTO saveDTO = this.measurementService.save(measurementDTO);
-        return ResponseEntity.created(uriComponentsBuilder.replacePath("test/measurement/{measurementId")
-                .buildAndExpand(saveDTO.getId()).toUri()).body(saveDTO);
+        return ResponseEntity.created(new URI("/test/measurements/" + saveDTO.getId())).body(saveDTO);
+    }
+
+    @GetMapping("{id:\\d+}")
+    public  MeasurementDTO getMeasurement(@PathVariable Long id){
+        return this.measurementService.findById(id);
     }
 
 }
