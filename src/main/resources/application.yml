@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: org.hsqldb.jdbc.JDBCDriver
+    username: Zumber
+    password: Zumber
+    url: jdbc:hsqldb:mem:testdb
+
+  liquibase:
+    change-log: db/changelog/main-changelog.yml
+#    enabled: false

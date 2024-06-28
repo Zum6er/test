@@ -11,10 +11,11 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MeasurementDTO {
-    Long id;
-    String userName;
-    MeasurementType measurementType;
-    BigDecimal value;
-    LocalDate startDate;
-    LocalDate endDate;
+    
+    private Long id;
+    private String userName;
+    private MeasurementType measurementType;
+    private BigDecimal value;
+    private LocalDate startDate;
+    private LocalDate endDate;
 }

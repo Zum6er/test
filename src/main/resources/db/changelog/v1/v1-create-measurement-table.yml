@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1-1
+      author: Ilya
+
+      changes:
+        - createTable:
+            tableName: measurement
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: user_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: measurement_type
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: value
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: start_date
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: end_date
+                  type: date
+                  constraints:
+                    nullable: false
