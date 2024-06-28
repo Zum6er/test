@@ -13,9 +13,14 @@ import java.time.LocalDate;
 public class MeasurementDTO {
     
     private Long id;
+
     private String userName;
+
     private MeasurementType measurementType;
+
     private BigDecimal value;
+
     private LocalDate startDate;
+
     private LocalDate endDate;
 }
